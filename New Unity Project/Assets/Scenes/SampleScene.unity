@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserShot: {fileID: 2655268876435904640, guid: 1425413b7b4a2414a8c3f3924fbb3e5a, type: 3}
   laserGun: {fileID: 1524828072}
-  speed: 50
+  speed: 40
   rotationSpeed: 0.8
   xMax: 40
   xMin: -40

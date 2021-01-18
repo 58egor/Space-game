@@ -12,6 +12,8 @@ public class Control : MonoBehaviour
     public float xMax, xMin, zMax, zMin;
     float moveHorizontal;//лево/право
     float moveVertical;//вперед/назад
+    public float shotDelay;//задержка между выстрелами
+    float nextShotTime;//перерыв между выстрелами
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +25,14 @@ public class Control : MonoBehaviour
     {
         moveHorizontal=Input.GetAxis("Horizontal");//лево/право
         moveVertical = Input.GetAxis("Vertical");//вперед/назад
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (nextShotTime>=shotDelay && Input.GetKey(KeyCode.Space)) 
         {
             Instantiate(laserShot, laserGun);
+            nextShotTime = 0;
+        }
+        else
+        {
+            nextShotTime += Time.deltaTime;
         }
     }
     private void FixedUpdate()
