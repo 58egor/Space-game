@@ -23,7 +23,11 @@ public class Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveHorizontal=Input.GetAxis("Horizontal");//лево/право
+        if (!Controller.isStarted)
+        {
+            return;
+        }
+        moveHorizontal =Input.GetAxis("Horizontal");//лево/право
         moveVertical = Input.GetAxis("Vertical");//вперед/назад
         if (nextShotTime>=shotDelay && Input.GetKey(KeyCode.Space)) 
         {
@@ -37,6 +41,10 @@ public class Control : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (!Controller.isStarted)
+        {
+            return;
+        }
         starShip.velocity = new Vector3(moveHorizontal, 0, moveVertical) * speed;
         float clampedX = Mathf.Clamp(starShip.position.x, xMin, xMax);//ограничиваем позиции корабля,если находится не в диапозоне выбирается мин или макс
         float clampedZ = Mathf.Clamp(starShip.position.z, zMin, zMax);//ограничиваем позиции корабля,если находится не в диапозоне выбирается мин или макс

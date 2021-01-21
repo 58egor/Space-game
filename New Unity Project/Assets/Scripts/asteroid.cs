@@ -32,6 +32,7 @@ public class asteroid : MonoBehaviour
             GameObject newExplosion=Instantiate(playerExplosion, other.transform.position, Quaternion.identity);
             newExplosion.transform.localScale *= multiplier;
         }
+        Controller.score += 10;
         Instantiate(asteroidExplosion, transform.position, Quaternion.identity);
         Destroy(other.gameObject);
         Destroy(gameObject);

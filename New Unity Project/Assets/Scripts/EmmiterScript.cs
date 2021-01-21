@@ -16,6 +16,10 @@ public class EmmiterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Controller.isStarted)
+        {
+            return;
+        }
         if (timer >= nextLaunchTime)
         {
             float xSize = transform.localScale.x / 2;
